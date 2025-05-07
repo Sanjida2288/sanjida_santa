@@ -921,5 +921,19 @@
   <script src="js/owl.carousel.js"></script>
   <script src="js/typed.js"></script>
   <script src="js/scripts.js"></script>
+	<script>
+  $(function () {
+    if (!window.initialized) {
+      window.initialized = true;  // Mark the initialization
+      // Your code that should only run once
+      $(window).on("load", function() {
+        var preload = $('.preloader');
+        preload.find('.spinner').fadeOut(function(){
+          preload.fadeOut();
+        });
+      });
+    }
+  });
+</script>
 </body>
 </html>
