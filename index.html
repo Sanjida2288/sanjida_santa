@@ -868,5 +868,18 @@
   <script src="js/owl.carousel.js"></script>
   <script src="js/typed.js"></script>
   <script src="js/scripts.js"></script>
+  <script>
+  document.addEventListener('contextmenu', e => e.preventDefault()); // Disable right-click
+
+  document.onkeydown = function(e) {
+    if (
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+      (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+    ) {
+      return false;
+    }
+  };
+</script>
 </body>
 </html>
