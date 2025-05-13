@@ -1,3 +1,7 @@
+.no-select {
+  pointer-events: none;
+  user-select: none;
+}
 .header .menu-btn,
 .header .top-menu ul li a {
     position: relative;
