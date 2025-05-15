@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +25,7 @@
 </head>
 
 <body>
-  <div class="page new-skin" >
+  <div class="page new-skin">
     <div class="container " data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
 
       <!--
@@ -118,16 +119,17 @@
           <!-- profile socials -->
           <div class="social">
 
-            <a target="_blank" href="https://www.linkedin.com/in/sanjida-sultana-193994136/"><span class="fa fa-twitter"></span></a>
+            <a target="_blank" href="https://www.linkedin.com/in/sanjida-sultana-193994136/"><span
+                class="fa fa-twitter"></span></a>
             <a target="_blank" href="https://sanjida-santa.vercel.app/"><span class="fa fa-github"></span></a>
           </div>
 
           <!-- profile buttons -->
           <div class="lnks">
-            <a href="images/Blue and Gray Simple Professional CV Resume.pdf" class="lnk" download>
+            <a href="images/Blue and Gray Simple Professional CV Resume.pdf" class="lnk" download target="_blank">
               <span class="text">Download CV</span>
             </a>
-            <a href="#" class="lnk discover">
+            <a href="#" id="contactBtn" class="lnk discover">
               <span class="text">Contact Me</span>
             </a>
           </div>
@@ -820,7 +822,7 @@
 				Card - Contacts
 			-->
       <div class="card-inner contacts" id="contacts-card">
-        <div class="card-wrap">
+        <div class="card-wrap" id="contacts">
 
           <!--
 						Conacts Info
@@ -841,7 +843,7 @@
                   <ul>
                     <li><strong>Address . . . . .</strong> Dhaka, Bangladesh</li>
                     <li><strong>Email . . . . .</strong> sanjidasultana2288@gmail.com </li>
-<!--                     <li><strong>Phone . . . . .</strong> +8801621296858</li> -->
+                    <!-- <li><strong>Phone . . . . .</strong> +8801621296858</li> -->
                     <li><strong>Freelance . . . . .</strong> Available</li>
                   </ul>
                 </div>
@@ -869,17 +871,42 @@
   <script src="js/typed.js"></script>
   <script src="js/scripts.js"></script>
   <script>
-  document.addEventListener('contextmenu', e => e.preventDefault()); // Disable right-click
+    document.addEventListener('contextmenu', e => e.preventDefault()); // Disable right-click
 
-  document.onkeydown = function(e) {
-    if (
-      e.keyCode === 123 || // F12
-      (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
-      (e.ctrlKey && e.keyCode === 85) // Ctrl+U
-    ) {
-      return false;
-    }
-  };
-</script>
+    document.onkeydown = function (e) {
+      if (
+        e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+      ) {
+        return false;
+      }
+    };
+  </script>
+  <script>
+    document.getElementById("contactBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      //console.log('HI');
+      history.pushState(null, null, "#contacts-card");
+      const menuItems = document.querySelectorAll(".top-menu ul li");
+      menuItems.forEach(item => item.classList.remove("active"));
+      if (menuItems.length > 0) {
+        menuItems[menuItems.length - 1].classList.add("active");
+      }
+      // Handle card animations
+      const cards = document.querySelectorAll(".card-inner");
+      cards.forEach(card => {
+        card.classList.remove("active", "animated", "fadeInLeft");
+        card.classList.add("fadeOutLeft", "hidden");
+      });
+
+      const contactCard = document.querySelector(".card-inner.contacts");
+      if (contactCard) {
+        contactCard.classList.remove("fadeOutLeft", "hidden");
+        contactCard.classList.add("active", "animated", "fadeInLeft");
+      }
+    });
+  </script>
 </body>
+
 </html>
